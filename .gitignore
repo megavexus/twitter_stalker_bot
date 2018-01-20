@@ -3,3 +3,4 @@
 .vscode
 venv*
 sqlite3
+tokens.conf

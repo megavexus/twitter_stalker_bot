@@ -110,17 +110,19 @@ class Tweetbot(object):
             self.bot.reply_to(message, "\n".join(results))
 
 
-# Ponemos nuestro Token generado con el @BotFather
-TOKEN = '511354357:AAEOEGk47uDZ4zvxW8vAlFJmcvIxlNOFHtw'
+def main():
 
-bot = Tweetbot(TOKEN)
-bot.poll()
+    import configparser
+    settings = configparser.ConfigParser()
+    settings.read('tokens.conf')
+
+    # Ponemos nuestro Token generado con el @BotFather
+    print(settings.sections())
+    TOKEN = settings.get('TelegramBot', 'token')
+
+    bot = Tweetbot(TOKEN)
+    bot.poll()
 
 
-"""
-/assign google.com
-/ping
-/map
-
-AWS
-"""
+if __name__ == "__main__":
+    main()
